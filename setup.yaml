@@ -9,3 +9,4 @@
   tasks:
     - include: tasks/zsh.yaml
     - include: tasks/node.yaml
+    - include: tasks/dotfiles.yaml
