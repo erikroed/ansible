@@ -8,3 +8,4 @@ Installing
  - [ ] Telegram(?)
  - [ ] GitHub Cli
  - [ ] Brave browser (?)
+ - [ ] [Nala](https://gitlab.com/volian/nala/-/releases)
