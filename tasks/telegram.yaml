@@ -1,0 +1,5 @@
+- name: Install Telegram
+  ansible.builtin.apt:
+    name: telegram-desktop
+  tags:
+    - telegram
