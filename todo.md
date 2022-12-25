@@ -4,7 +4,7 @@ Add tasks for:
 
 Installing
  - [ ] Spotify
- - [ ] Discord
+ - [x] Discord
  - [ ] Telegram(?)
  - [ ] GitHub Cli
  - [ ] Brave browser (?)
