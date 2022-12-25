@@ -12,3 +12,5 @@
     - include_tasks: tasks/zsh.yaml
     - include_tasks: tasks/node.yaml
     - include_tasks: tasks/dotfiles.yaml
+    - include_tasks: tasks/discord.yaml
+    - include_tasks: tasks/telegram.yaml
