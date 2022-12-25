@@ -6,7 +6,8 @@
         update_cache: true
       tags:
         - node
+        - discord
   tasks:
-    - include: tasks/zsh.yaml
-    - include: tasks/node.yaml
-    - include: tasks/dotfiles.yaml
+    - include_tasks: tasks/zsh.yaml
+    - include_tasks: tasks/node.yaml
+    - include_tasks: tasks/dotfiles.yaml
