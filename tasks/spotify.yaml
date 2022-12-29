@@ -1,0 +1,25 @@
+- name: Add Spotify repository into sources list
+  ansible.builtin.apt_repository:
+    repo: deb http://repository.spotify.com stable non-free
+    state: present
+  tags: 
+    - install
+    - spotify 
+
+- name: Add Spotify signing key
+  ansible.builtin.apt_key:
+    url: https://download.spotify.com/debian/pubkey.gpg
+    state: present
+  tags: 
+    - install
+    - spotify
+
+- name: Update cache and install Spotify Client
+  become: true
+  apt:
+    update_cache: true
+    name: spotify-client
+  tags: 
+    - install
+    - spotify
+    
