@@ -3,9 +3,9 @@
 Add tasks for: 
 
 Installing
- - [ ] Spotify
+ - [x] Spotify
  - [x] Discord
  - [x] Telegram
  - [ ] GitHub Cli
- - [ ] Brave browser (?)
+ - [x] Brave browser
  - [ ] [Nala](https://gitlab.com/volian/nala/-/releases)
