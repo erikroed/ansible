@@ -33,3 +33,21 @@
   tags:
     - install
     - docker
+
+- name: Ensure group "docker" exists
+  ansible.builtin.group:
+    name: docker
+    state: present
+  tags:
+    - install
+    - docker
+
+- name: Add user to docker group
+  become: yes
+  user:
+    name: "erikro"
+    groups: docker
+    append: yes
+  tags:
+    - install
+    - docker
