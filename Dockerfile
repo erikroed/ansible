@@ -2,6 +2,9 @@ FROM ubuntu:22.04
 
 WORKDIR /usr/local/bin
 
+ENV TZ=Europe/Osl
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 RUN apt update &&  \
     apt install -y software-properties-common && \
     apt-add-repository -y ppa:ansible/ansible &&  \
@@ -11,4 +14,6 @@ RUN apt update &&  \
 
 COPY . .
 
-CMD ["sh", "-c", "ansible-playbook $TAGS setup.yaml"]
+ARG TAGS
+
+CMD ["sh", "-c", "ansible-playbook $TAGS local.yaml"]
