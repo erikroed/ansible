@@ -6,6 +6,7 @@
         update_cache: true
       tags:
         - node
+        - docker
         - discord
         - telegram
         - brave
@@ -15,6 +16,7 @@
     - import_tasks: tasks/node.yaml
     - import_tasks: tasks/dotfiles.yaml
     - import_tasks: tasks/git-setup.yaml
+    - import_tasks: tasks/docker.yaml
     - import_tasks: tasks/brave.yaml
     - import_tasks: tasks/discord.yaml
     - import_tasks: tasks/telegram.yaml
