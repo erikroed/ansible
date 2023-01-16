@@ -4,11 +4,25 @@
     scope: global
     value: "post@erikroed.no"
   tags:
-  - git
+    - git
 - name: Git personal setup name
   git_config:
     name: user.name
     scope: global
-    value: "erikroed"
+    value: "Erik Røed"
   tags:
-  - git
+    - git
+- name: Git personal set signing key format
+  git_config:
+    name: gpg.format
+    scope: global
+    value: "ssh"
+  tags:
+    - git
+- name: Git personal set signing key
+  git_config:
+    name: user.signingkey
+    scope: global
+    value: "~/.ssh/id_rsa.pub"
+  tags:
+    - git
