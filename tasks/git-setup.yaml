@@ -23,6 +23,6 @@
   git_config:
     name: user.signingkey
     scope: global
-    value: "~/.ssh/id_rsa.pub"
+    value: "~/.ssh/id_ed25519.pub"
   tags:
     - git
