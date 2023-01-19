@@ -12,12 +12,12 @@
         - brave
         - spotify
   tasks:
-    - import_tasks: tasks/zsh.yaml
+#    - import_tasks: tasks/zsh.yaml
     - import_tasks: tasks/node.yaml
-    - import_tasks: tasks/dotfiles.yaml
+#    - import_tasks: tasks/dotfiles.yaml
     - import_tasks: tasks/git-setup.yaml
     - import_tasks: tasks/docker.yaml
-    - import_tasks: tasks/brave.yaml
-    - import_tasks: tasks/discord.yaml
-    - import_tasks: tasks/telegram.yaml
-    - import_tasks: tasks/spotify.yaml
+#    - import_tasks: tasks/brave.yaml
+#    - import_tasks: tasks/discord.yaml
+#    - import_tasks: tasks/telegram.yaml
+#    - import_tasks: tasks/spotify.yaml
