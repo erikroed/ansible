@@ -9,3 +9,6 @@ Installing
  - [ ] GitHub Cli
  - [x] Brave browser
  - [ ] [Nala](https://gitlab.com/volian/nala/-/releases)
+ - [ ] IntelliJ
+ - [ ] Oh My Posh + dotfiles
+ - [ ] 
