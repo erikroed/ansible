@@ -2,6 +2,8 @@ FROM ubuntu:22.04 AS base
 
 WORKDIR /usr/local/bin
 
+ENV DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y software-properties-common curl git build-essential && \
@@ -11,13 +13,8 @@ RUN apt-get update && \
     apt-get clean autoclean && \
     apt-get autoremove --yes
 
-FROM base AS erikro
 ARG TAGS
-RUN addgroup --gid 1000 erikro
-RUN adduser --gecos erikro --uid 1000 --gid 1000 --disabled-password erikro
-USER erikro
-WORKDIR /home/erikro
 
-FROM erikro
 COPY . .
+
 CMD ["sh", "-c", "ansible-playbook $TAGS local.yml"]
