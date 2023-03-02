@@ -13,8 +13,14 @@ RUN apt-get update && \
     apt-get clean autoclean && \
     apt-get autoremove --yes
 
+FROM base as roed
 ARG TAGS
+RUN addgroup --gid 1000 roed
+RUN adduser --gecos roed --uid 1000 --gid 1000 --disabled-password roed
+USER roed
+WORKDIR /home/roed
 
+FROM roed
 COPY . .
 
 CMD ["sh", "-c", "ansible-playbook $TAGS local.yml"]
