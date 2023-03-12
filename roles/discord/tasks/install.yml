@@ -1,5 +1,7 @@
 - name: Install discord
-  ansible.builtin.apt:
-    name: discord
+  become: true
+  apt:
+    deb: https://dl.discordapp.net/apps/linux/0.0.25/discord-0.0.25.deb
+    update_cache: yes
   tags:
     - discord

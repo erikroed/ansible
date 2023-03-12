@@ -26,6 +26,7 @@
     - docker
     
 - name: Update apt and install docker-ce
+  become: yes
   apt:
     name: docker-ce
     state: latest
