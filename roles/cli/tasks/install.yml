@@ -1,0 +1,9 @@
+- name: Install fzf
+  become: true
+  apt:
+    name: fzf
+    update_cache: true
+  tags:
+    - install
+    - cli
+    - fzf
