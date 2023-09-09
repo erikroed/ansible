@@ -1,0 +1,5 @@
+- name: Check if keypair exists
+  become: true
+  community.crypto.openssh_keypair:
+    passphrase: "Read password from a password manager?"
+    regenerate: partial_idempotence

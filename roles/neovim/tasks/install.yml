@@ -1,5 +1,0 @@
-- name: Install neovim
-  become: true
-  apt:
-    deb: https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb
-    update_cache: yes

@@ -23,4 +23,6 @@ WORKDIR /home/roed
 FROM roed
 COPY . .
 
+RUN ansible-galaxy install -r requirements.yml
+
 CMD ["sh", "-c", "ansible-playbook $TAGS local.yml"]

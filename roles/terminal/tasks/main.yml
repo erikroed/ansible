@@ -1,0 +1,31 @@
+- name: Install cli tools
+  become: true
+  import_tasks: cli.yml
+  tags: cli
+
+- name: Install docker
+  import_tasks: docker.yml
+  tags: docker
+
+- name: Clone and stow dotfiles
+  import_tasks: dotfiles.yml
+  tags: dotfiles
+
+- name: Configure git
+  import_tasks: git.yml
+  tags: git
+
+- name: Install neovim
+  become: true
+  import_tasks: nvim.yml
+  tags: neovim
+
+- name: Install and configure sdkman
+  import_tasks: sdkman.yml
+  tags: sdkman
+
+- name: Install rust
+  import_tasks: rust.yml
+  tags: rust
+
+# - import_tasks: ssh.yml

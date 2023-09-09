@@ -1,0 +1,5 @@
+- hosts: localhost
+  roles:
+    - { role: terminal, tags: terminal }
+    - { role: gui, tags: gui }
+  ignore_errors: yes
