@@ -34,4 +34,7 @@
   import_tasks: rust.yml
   tags: rust
 
-# - import_tasks: ssh.yml
+- name: Task
+  become: true
+  import_tasks: ssh.yml
+  tags: ssh
