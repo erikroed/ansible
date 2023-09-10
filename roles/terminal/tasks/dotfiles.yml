@@ -1,5 +1,7 @@
 - name: Install stow
-  apt: name=stow
+  become: true
+  apt:
+    name: stow
   tags:
     - install
     - dotfiles
@@ -19,6 +21,7 @@
     - stow
 
 - name: Stow dotfiles
+  become: true
   shell: cd $HOME/.dotfiles && ./ubuntu
   tags:
     - install

@@ -2,6 +2,6 @@
   become: true
   apt:
     deb: https://dl.discordapp.net/apps/linux/0.0.25/discord-0.0.25.deb
-    update_cache: yes
+    update_cache: true
   tags:
     - discord

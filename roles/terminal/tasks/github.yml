@@ -13,14 +13,15 @@
     DEBIAN_FRONTEND: noninteractive  # Suppress interactive prompts
 
 - name: Add GitHub CLI repository to sources.list.d
-  lineinfile:
-    path: /etc/apt/sources.list.d/github-cli.list
-    line: "deb [arch={{ ansible_architecture }} signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main"
-  become: yes
+  apt_repository:
+    repo: "deb [arch={{ ansible_architecture }} signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main"
+    filename: github-cli
+  register: github_cli_repo
 
-- name: Update package cache
+- name: Update package cache after gh cli repo was added to sources.list.d
   apt:
-    update_cache: yes
+    update_cache: true
+  when: github_cli_repo.changed
 
 - name: Install GitHub CLI
   apt:

@@ -1,4 +1,4 @@
-- name: Install required system packages
+- name: Install required system packages for docker
   apt:
     pkg:
       - apt-transport-https
@@ -24,8 +24,8 @@
   tags:
     - install
     - docker
-    
-- name: Update apt and install docker-ce
+
+- name: Update apt cache and install docker-ce
   become: yes
   apt:
     name: docker-ce

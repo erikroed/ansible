@@ -1,4 +1,4 @@
-- name: Update repositories
+- name: Update apt cache before installing Rust
   become: true
   apt:
     update_cache: true
