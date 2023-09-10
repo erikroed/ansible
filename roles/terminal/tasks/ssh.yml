@@ -12,6 +12,8 @@
     type: rsa
     size: 4096
     passphrase: "{{ input.user_input }}"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
   tags:
     - rsa
 
@@ -28,5 +30,7 @@
     path: "/home/{{ ansible_user_id }}/.ssh/id_ed25519"
     type: ed25519
     passphrase: "{{ input.user_input }}"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
   tags:
     - ed

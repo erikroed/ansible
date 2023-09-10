@@ -2,7 +2,7 @@
   file:
     path: /opt/nvim
     state: directory
-    mode: '07555'
+    mode: '0755'
 
 - name: Download and extract zip
   ansible.builtin.unarchive:
@@ -15,8 +15,3 @@
     src: /opt/nvim/nvim-linux64/bin/nvim
     dest: /usr/local/bin/nvim
     mode: a+x
-
-- name: Clear up downloaded folder
-  file:
-    path: /opt/nvim
-    state: absent
