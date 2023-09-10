@@ -3,22 +3,27 @@
   import_tasks: cli.yml
   tags: cli
 
-- name: Install docker
-  import_tasks: docker.yml
-  tags: docker
+- name: Install neovim
+  become: true
+  import_tasks: nvim.yml
+  tags: neovim
 
 - name: Clone and stow dotfiles
   import_tasks: dotfiles.yml
   tags: dotfiles
 
+- name: Install GitHub CLI
+  become: true
+  import_tasks: github.yml
+  tags: gh
+
 - name: Configure git
   import_tasks: git.yml
   tags: git
 
-- name: Install neovim
-  become: true
-  import_tasks: nvim.yml
-  tags: neovim
+- name: Install docker
+  import_tasks: docker.yml
+  tags: docker
 
 - name: Install and configure sdkman
   import_tasks: sdkman.yml
