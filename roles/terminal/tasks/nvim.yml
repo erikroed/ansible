@@ -1,17 +1,8 @@
-- name: Create download folder if not exist
-  file:
-    path: /opt/nvim
-    state: directory
-    mode: '0755'
+- name: Update apt cache
+  apt:
+    update_cache: yes
 
-- name: Download and extract zip
-  ansible.builtin.unarchive:
-    src: https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
-    dest: /opt/nvim
-    remote_src: yes
-
-- name: Move binary and make it executable
-  copy:
-    src: /opt/nvim/nvim-linux64/bin/nvim
-    dest: /usr/local/bin/nvim
-    mode: a+x
+- name: Install neovim
+  apt:
+    name: neovim
+    state: present
