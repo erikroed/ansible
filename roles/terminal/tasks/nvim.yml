@@ -1,8 +1,19 @@
-- name: Update apt cache
-  apt:
-    update_cache: yes
+- name: Download AppImage
+  get_url:
+    url: https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
+    dest: .
+    mode: 'u+x'
 
-- name: Install neovim
-  apt:
-    name: neovim
-    state: present
+- name: Extract AppImage
+  command: ./nvim.appimage --appimage-extract
+
+- name: Move squashfs-root to "{{ home_path }}"
+  command: mv squashfs-root "{{ home_path }}"
+
+- name: Create symlink to AppRun
+  command: ln -sf "{{ home_path }}"/squashfs-root/AppRun /usr/bin/nvim
+
+- name: Remove tmp AppImage file
+  file:
+    path: ./nvim.appimage
+    state: absent

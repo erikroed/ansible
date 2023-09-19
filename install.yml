@@ -1,4 +1,6 @@
 - hosts: localhost
+  vars:
+    home_path: "{{ ansible_facts['env']['HOME'] }}"
   roles:
     - { role: terminal, tags: terminal }
     - { role: gui, tags: gui }
