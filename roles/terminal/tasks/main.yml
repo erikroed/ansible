@@ -30,11 +30,16 @@
   import_tasks: sdkman.yml
   tags: sdkman
 
-- name: Install rust
-  import_tasks: rust.yml
-  tags: rust
-
 - name: Task
   become: true
   import_tasks: ssh.yml
   tags: ssh
+
+- name: Install rust
+  import_tasks: rust.yml
+  tags: rust
+
+- name: Install python stuff
+  become: true
+  import_tasks: python3.yml
+  tags: python
