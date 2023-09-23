@@ -1,0 +1,7 @@
+- name: Upgrade packages
+  apt:
+    name: "*"
+    state: latest
+    update_cache: true
+  tags:
+    - upgrade_packages

@@ -4,4 +4,5 @@
   roles:
     - { role: terminal, tags: terminal }
     - { role: gui, tags: gui }
+    - { role: os, tags: os }
   ignore_errors: yes
