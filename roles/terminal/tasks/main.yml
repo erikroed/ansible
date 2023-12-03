@@ -30,7 +30,7 @@
   import_tasks: sdkman.yml
   tags: sdkman
 
-- name: Task
+- name: Task for ssh
   become: true
   import_tasks: ssh.yml
   tags: ssh
@@ -43,3 +43,10 @@
   become: true
   import_tasks: python3.yml
   tags: python
+
+- name: Install Go
+  become: true
+  import_tasks: golang.yml
+  tags:
+    - go
+    - golang
