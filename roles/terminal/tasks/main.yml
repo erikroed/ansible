@@ -50,3 +50,10 @@
   tags:
     - go
     - golang
+
+- name: Install terraform
+  become: true
+  import_tasks: terraform.yml
+  tags:
+    - terraform
+    - tf
