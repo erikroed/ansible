@@ -21,8 +21,7 @@
     - stow
 
 - name: Stow dotfiles
-  become: true
-  shell: cd $HOME/.dotfiles && ./ubuntu
+  shell: cd "{{ lookup('env', 'HOME') }}"/.dotfiles && ./ubuntu
   tags:
     - install
     - dotfiles
