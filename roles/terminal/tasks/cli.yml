@@ -24,6 +24,16 @@
   tags:
     - tmux
 
+- name: Clone tmux plugin manager
+  git:
+    repo: https://github.com/tmux-plugins/tpm.git
+    dest: "/home/{{ ansible_env.USER }}/.tmux/plugins/tmp"
+    accept_hostkey: yes
+    version: master
+  tags:
+    - tmux
+    - tmux-plugin
+
 - name: Install ripgrep
   apt:
     deb: https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep_13.0.0_amd64.deb
