@@ -27,7 +27,7 @@
 - name: Clone tmux plugin manager
   git:
     repo: https://github.com/tmux-plugins/tpm.git
-    dest: "/home/{{ ansible_env.USER }}/.tmux/plugins/tmp"
+    dest: "/home/{{ ansible_env.USER }}/.tmux/plugins/tpm"
     accept_hostkey: yes
     version: master
   tags:
