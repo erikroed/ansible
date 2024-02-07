@@ -57,3 +57,10 @@
   tags:
     - terraform
     - tf
+
+- name: Install azure-cli
+  become: true
+  import_tasks: azure-cli.yml
+  tags:
+    - az
+    - azure
