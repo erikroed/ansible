@@ -64,3 +64,7 @@
   tags:
     - az
     - azure
+
+- name: Remember to reload shell with the following command
+  debug:
+    msg: "source ~/.bashrc"
