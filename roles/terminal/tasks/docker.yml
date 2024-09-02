@@ -70,6 +70,8 @@
     state: present
     
 - name: Add {{ ansible_user }} to group docker
+  vars:
+    ansible_user: "{{ lookup('env', 'USER') }}"
   user:
     name: "{{ ansible_user }}"
     groups: docker
