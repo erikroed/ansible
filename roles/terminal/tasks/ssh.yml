@@ -1,3 +1,9 @@
+- name: Create .ssh folder if not exists
+  file:
+    path: ~/.ssh
+    state: directory
+    mode: '0700'
+
 - name: Prompt for RSA passphrase
   pause:
     prompt: "Enter passphrase for RSA key (empty for no passphrase): "
