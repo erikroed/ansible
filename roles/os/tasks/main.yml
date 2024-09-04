@@ -1,4 +1,0 @@
-- name: Upgrade packages
-  become: true
-  import_tasks: upgrade.yml
-  tags: upgrade

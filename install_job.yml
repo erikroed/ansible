@@ -1,0 +1,8 @@
+- hosts: localhost
+  gather_facts: true
+
+  roles:
+    - cli
+    - zen
+
+  ignore_errors: yes

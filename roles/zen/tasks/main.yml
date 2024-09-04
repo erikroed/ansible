@@ -1,0 +1,14 @@
+- name: Download installation script
+  get_url:
+      url: https://codeberg.org/neuner/zen-linux.sh/raw/branch/main/zen-linux.sh
+      dest: /tmp/zen-linux.sh
+      mode: '0755'
+
+- name: Install Zen Browser and create desktop entry
+  shell:
+    cmd: "/tmp/zen-linux.sh {{ item }}"
+  environment:
+    HOME: "/home/{{ ansible_user_id }}"
+  loop:
+    - install
+    - desktop
