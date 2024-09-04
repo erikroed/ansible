@@ -3,26 +3,27 @@
     name: user.email
     scope: global
     value: "post@erikroed.no"
-  tags:
-    - git
+      
 - name: Git personal setup name
   git_config:
     name: user.name
     scope: global
     value: "Erik Røed"
-  tags:
-    - git
+      
 - name: Git personal set signing key format
   git_config:
     name: gpg.format
     scope: global
     value: "ssh"
-  tags:
-    - git
+
 - name: Git personal set signing key
   git_config:
     name: user.signingkey
     scope: global
     value: "~/.ssh/id_ed25519.pub"
-  tags:
-    - git
+
+- name: Set vim as editor
+  git_config:
+    name: core.editor
+    scope: global
+    value: vim
