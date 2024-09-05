@@ -1,0 +1,65 @@
+- name: Ensure apt is the package manager
+  command:
+    cmd: which apt
+  register: apt_check
+  failed_when: apt_check.rc != 0
+
+- name: Fail if apt is not the package manager
+  assert:
+    that:
+      - apt_check.rc == 0
+    fail_msg: "The Azure role is only configured to be run on linux distros using apt as package manager"
+
+- name: Ensure required packages is installed
+  become: true
+  package:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg
+      - lsb-release
+    state: present
+
+- name: Create folder for signing key
+  file:
+    path: /etc/apt/keyrings
+    state: directory
+
+- name: Download signing key
+  get_url:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    dest: "{{ tmp_folder }}/microsoft.asc"
+
+- name: Import GPG key
+  become: true
+  shell:
+    cmd: "gpg --dearmor {{ tmp_folder }}/microsoft.asc | sudo tee /etc/apt/keyrings/microsoft.gpg > /dev/null"
+    creates: /etc/apt/keyrings/microsoft.gpg
+
+- name: Remove temporary key file
+  file:
+    path: "{{ tmp_folder }}/microsoft.asc"
+    state: absent
+
+- name: Set permissions on the gpg key
+  file:
+    path: /etc/apt/keyrings/microsoft.gpg
+    mode: 'go+r'
+
+- name: Create Azure CLI repository file
+  become: true
+  template:
+    src: azure-cli.sources.j2
+    dest: /etc/apt/sources.list.d/azure-cli.sources
+
+- name: Update cache
+  become: true
+  package:
+    update_cache: yes
+
+- name: Install az-cli
+  become: true
+  package:
+    name: azure-cli
+    state: present
