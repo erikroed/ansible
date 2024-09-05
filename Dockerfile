@@ -13,13 +13,16 @@ RUN apt-get update && \
     apt-get clean autoclean && \
     apt-get autoremove --yes
 
-RUN useradd -m -s /bin/bash roed && \
-    usermod -aG sudo roed && \
-    passwd -d roed
+ARG USERNAME=user
+ARG SUDO_PASS=changeme
 
-USER roed
+RUN useradd -m -s /bin/bash $USERNAME && \
+    usermod -aG sudo $USERNAME && \
+    echo "$USERNAME:$SUDO_PASS" | chpasswd
 
-WORKDIR /home/roed
+USER $USERNAME
+
+WORKDIR /home/$USERNAME
 RUN mkdir ansible
 
 WORKDIR ansible
