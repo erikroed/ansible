@@ -1,0 +1,13 @@
+- hosts: localhost
+  gather_facts: true
+
+  vars_prompt:
+    - name: username
+      prompt: "Please enter the username for the user to be deleted: "
+      private: no
+
+  roles:
+    - role: useradm
+      become: true
+      vars:
+        create_user: false

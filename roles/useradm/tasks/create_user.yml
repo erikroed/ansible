@@ -1,0 +1,13 @@
+- name: Add new user
+  user:
+    name: "{{ username }}"
+    password: "{{ password | password_hash }}"
+    create_home: yes
+    shell: /bin/bash
+
+- name: Add sudo to user if admin user
+  user:
+    name: "{{ username }}"
+    groups: sudo
+    append: yes
+  when: sudo_access|bool == true

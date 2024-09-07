@@ -1,0 +1,26 @@
+- hosts: localhost
+  gather_facts: true
+
+  vars_prompt:
+    - name: username
+      prompt: "Please enter a username: "
+      private: no
+
+    - name: password
+      prompt: "Please enter a password: "
+      private: yes
+
+    - name: admin_access
+      prompt: "Should the new user have admin privileges? (y/n): "
+      private: no
+
+  pre_tasks:
+      - name: set sudo_access fact
+        set_fact:
+          sudo_access: "{{ admin_access | lower in ['y', 'yes'] }}"
+
+  roles:
+    - role: useradm
+      become: true
+      vars:
+        create_user: true

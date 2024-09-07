@@ -1,0 +1,5 @@
+- import_tasks: create_user.yml
+  when: create_user|bool == true
+
+- import_tasks: remove_user.yml
+  when: create_user|bool == false
