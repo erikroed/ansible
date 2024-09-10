@@ -1,0 +1,4 @@
+- name: Install kubectx & kubens
+  become: true
+  package:
+    name: kubectx
