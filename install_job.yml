@@ -2,13 +2,7 @@
   gather_facts: true
 
   roles:
-    - role: cli
-      tags: cli
-    - role: zen
-      tags: zen
     - role: azure
       tags: azure
-    - role: kubernetes
-      tags: kubernetes
 
   ignore_errors: yes
