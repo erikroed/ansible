@@ -4,10 +4,13 @@ This repo contains my setup to make it easier to replicate on all my machines.
 It's mostly installation and setup of developer tools etc, but also some gui applications etc.
 
 ## TOC
+- [Usage](#usage)
 - [Requirements](#requirements)
 - [Docker](#docker)
 - [Playbooks](#playbooks)
 
+<!-- TOC --><a name="usage"></a>
+## Usage
 Some playbooks requires sudo permissions, just run the playbook with the `-K` flag and ansible will prompt for sudo password before running the playbook.
 
 ```shell
