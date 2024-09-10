@@ -6,8 +6,6 @@
       tags: cli
     - role: zen
       tags: zen
-    - role: azure
-      tags: azure
     - role: kubernetes
       tags: kubernetes
 

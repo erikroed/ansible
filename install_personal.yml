@@ -2,7 +2,7 @@
   gather_facts: true
 
   roles:
-    - cli
-    - zen
+    - role: telegram
+      tags: telegram
 
   ignore_errors: yes
