@@ -1,7 +1,12 @@
-# Ansible 
+# Ansible
 
 This repo contains my setup to make it easier to replicate on all my machines.
-It's mostly installation and setup of developer tools etc, but also some other things like browser, chatting programs etc.
+It's mostly installation and setup of developer tools etc, but also some gui applications etc.
+
+## TOC
+- [Requirements](#requirements)
+- [Docker](#docker)
+- [Playbooks](#playbooks)
 
 Some playbooks requires sudo permissions, just run the playbook with the `-K` flag and ansible will prompt for sudo password before running the playbook.
 
@@ -15,7 +20,8 @@ To run specific roles, use the rolename as tag:
 ansible-playbook <playbook>.yml -t <rolename>
 ```
 
-# Requirements
+<!-- TOC --><a name="requirements"></a>
+## Requirements
 
 The playbook utilizes some community roles. To ensure the playbook works, we need to
 
@@ -24,7 +30,8 @@ The playbook utilizes some community roles. To ensure the playbook works, we nee
 
 This is handled by the install-ansible.sh file
 
-# Docker
+<!-- TOC --><a name="docker"></a>
+## Docker
 
 It's possible to run the whole environment in it's own container.
 The docker configuration is located in the `docker` folder.
@@ -35,7 +42,8 @@ To run it in the container, there is some helper scripts in the folder as well:
 - run-container.sh -> Runs the container and mounts the repo inside the container for easier development and testing.
   - The container will be removed when exiting out of the container, to keep the container, remove the "--rm" flag inside the bash file
 
-# Playbooks
+<!-- TOC --><a name="playbooks"></a>
+## Playbooks
 
 The playbooks have different use cases as described in the table below.
 They usually refer to necessary roles and to make them as flexible as possible, they are tagged with the rolename so it's possible to only run the roles you want to run.
