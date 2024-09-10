@@ -31,7 +31,7 @@ The playbook utilizes some community roles. To ensure the playbook works, we nee
 1. Install ansible
 2. Install community roles / requirements.yml
 
-This is handled by the install-ansible.sh file
+This is handled by the `install-ansible.sh` file
 
 <!-- TOC --><a name="docker"></a>
 ## Docker
