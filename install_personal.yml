@@ -8,5 +8,7 @@
       tags: telegram
     - role: spotify
       tags: spotify
+    - role: dotfiles
+      tags: dotfiles
 
   ignore_errors: yes
