@@ -1,0 +1,10 @@
+- name: Install node
+  package:
+    name:
+      - nodejs
+      - npm
+
+- name: Install n (node version management)
+  community.general.npm:
+    global: true
+    name: n
