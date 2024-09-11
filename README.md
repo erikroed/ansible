@@ -68,3 +68,4 @@ In this repo you will find the following playbooks:
 |install_common.yml         |Install tools regardless of profile  |
 |install_personal.yml       |Install tools for personal profile   |
 |install_job.yml            |Install tools for work profile       |
+|configure_git.yml          |Playbook to configure git configs    |

@@ -1,0 +1,17 @@
+- hosts: localhost
+  
+  vars_prompt:
+    - name: git_user_email
+      prompt: "Enter you're git user.email"
+      private: no
+
+    - name: git_user_name
+      prompt: "Enter you're git user.name"
+      private: no
+
+    - name: git_user_signingkey
+      prompt: "Enter the name of the ssh public key without .pub ending (must be stored in ~/.ssh/)"
+      private: no
+
+  roles: 
+    - git

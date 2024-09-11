@@ -1,0 +1,13 @@
+- name: Set git configurations
+  vars:
+    config:
+      - { key: 'user.email', value: '{{ git_user_email }}' }
+      - { key: 'user.name', value: '{{ git_user_name }}' }
+      - { key: 'user.signingkey', value: '~/.ssh/{{ git_user_signingkey }}.pub' }
+      - { key: 'gpg.format', value: 'ssh' }
+      - { key: 'core.editor', value: 'vim' }
+  git_config:
+    name: "{{ item.key }}"
+    scope: global
+    value: "{{ item.value }}"
+  with_items: "{{ config }}"
