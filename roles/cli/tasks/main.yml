@@ -10,20 +10,9 @@
       - fd-find
 
 - name: Install ripgrep
-  block:
-    - name: Get latest ripgrep version
-      uri:
-        url: https://api.github.com/repos/BurntSushi/ripgrep/releases/latest
-        return_content: yes
-      register: ripgrep_releases
-
-    - name: Set ripgrep release version
-      set_fact:
-        ripgrep_deb_url: "{{ (ripgrep_releases.json.assets | json_query('[?ends_with(browser_download_url, `.deb`)]'))[0].browser_download_url }}"
-
-    - name: Install binary
-      become: true
-      package:
-        deb: "{{ ripgrep_deb_url }}"
-        state: present
+  import_tasks: ripgrep.yml
   tags: ripgrep
+
+- name: Install GitHub CLI
+  import_tasks: github.yml
+  tags: github
