@@ -1,6 +1,14 @@
 - hosts: localhost
   gather_facts: true
 
+  pre_tasks:
+    - name: Ensure jq is installed
+      become: true
+      package:
+        name: jq
+        state: present
+      tags: zen
+
   roles:
     - role: cli
       tags: cli
