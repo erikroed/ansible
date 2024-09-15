@@ -2,3 +2,7 @@
   become: true
   package:
     name: kubectx
+
+- name: Install k9s
+  import_tasks: k9s.yml
+  tags: k9s

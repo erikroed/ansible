@@ -1,0 +1,15 @@
+- name: Get latest version
+  uri:
+    url: https://api.github.com/repos/derailed/k9s/releases/latest
+    return_content: yes
+  register: releases
+
+- name: Set deb_url 
+  set_fact:
+    deb_url: "{{ (releases.json.assets | json_query('[?ends_with(browser_download_url, `.deb`)]'))[0].browser_download_url }}"
+
+- name: Install binary
+  become: true
+  package:
+    deb: "{{ deb_url }}"
+    state: present
