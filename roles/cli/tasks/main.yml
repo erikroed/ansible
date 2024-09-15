@@ -9,6 +9,10 @@
       - tmux
       - fd-find
 
+- name: Install node
+  import_tasks: node.yml
+  tags: node
+
 - name: Install ripgrep
   import_tasks: ripgrep.yml
   tags: ripgrep

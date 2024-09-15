@@ -16,8 +16,6 @@
       tags: docker
     - role: k8s-tools
       tags: k8s-tools
-    - role: node
-      tags: node
     - role: zen
       tags: zen
 
