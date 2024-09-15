@@ -6,8 +6,8 @@
       tags: cli
     - role: docker
       tags: docker
-    - role: kubernetes
-      tags: kubernetes
+    - role: k8s-tools
+      tags: k8s-tools
     - role: node
       tags: node
     - role: zen
