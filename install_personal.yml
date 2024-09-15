@@ -10,5 +10,9 @@
       tags: spotify
     - role: dotfiles
       tags: dotfiles
+    - role: sdkman
+      vars:
+        sdk_profile_personal: true
+      tags: sdkman
 
   ignore_errors: yes

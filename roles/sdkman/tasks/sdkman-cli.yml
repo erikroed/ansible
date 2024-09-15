@@ -1,0 +1,31 @@
+- name: Check if sdkman is already installed
+  stat:
+    path: /tmp/sdkman.sh
+  register: install_script
+
+- name: Download and run installation if not already installed
+  block:
+
+  - name: Install required tools
+    become: true
+    package:
+      name:
+        - unzip
+        - zip
+
+  - name: Download sdkman installation script
+    get_url:
+      url: https://get.sdkman.io
+      dest: /tmp/sdkman.sh
+      mode: '0755'
+
+  - name: Run installation script
+    become: true
+    shell:
+      cmd: /tmp/sdkman.sh
+
+  - name: Source sdkman-init
+    debug:
+      msg: "Run: source $HOME/.sdkman/bin/sdkman-init.sh"
+
+  when: not install_script.stat.exists

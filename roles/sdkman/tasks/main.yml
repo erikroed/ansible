@@ -1,0 +1,11 @@
+- name: Install sdkman-cli tool
+  import_tasks: sdkman-cli.yml
+  tags: sdkman-cli
+
+- name: sdkman personal config
+  import_tasks: personal.yml
+  when: sdk_profile_personal|bool == true
+
+- name: sdkman personal work
+  import_tasks: work.yml
+  when: sdk_profile_personal|bool == false

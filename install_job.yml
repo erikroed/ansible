@@ -4,5 +4,9 @@
   roles:
     - role: azure
       tags: azure
+    - role: sdkman
+      vars:
+        sdk_profile_personal: false
+      tags: sdkman
 
   ignore_errors: yes
