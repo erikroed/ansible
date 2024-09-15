@@ -49,9 +49,7 @@ To run it in the container, there is some helper scripts in the folder as well:
 ## Playbooks
 
 The playbooks have different use cases as described in the table below.
-They usually refer to necessary roles and to make them as flexible as possible, they are tagged with the rolename so it's possible to only run the roles you want to run.
-
-In each playbook you will see the following structure for the roles:
+They usually refer to necessary roles and to make them as flexible as possible, they are tagged with the rolename so it's possible to only run the roles you want to run. This applies in particular to the install_* playbooks.
 
 ```yaml
 roles:
