@@ -20,3 +20,7 @@
 - name: Install GitHub CLI
   import_tasks: github.yml
   tags: github
+
+- name: Install Terraform
+  import_tasks: terraform.yml
+  tags: terraform

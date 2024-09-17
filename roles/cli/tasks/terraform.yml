@@ -1,0 +1,48 @@
+- name: Get list of terraform releases
+  uri:
+    url: "{{ terraform_base_url_releases }}/index.json"
+    return_content: yes
+  register: terraform_releases
+
+- name: Get latest release
+  set_fact:
+    latest_release: "{{ terraform_releases.content | from_json | json_query('versions.*.builds[] | [?os==`linux` && arch==`amd64`]') | last }}"
+
+- name: Print releases
+  debug:
+    msg: "{{ latest_release.url }}"
+
+- name: Download zip file
+  get_url:
+    url: "{{ latest_release.url }}"
+    dest: /tmp/terraform.zip
+
+- name: Ensure zip-tools is installed
+  become: true
+  package:
+    name:
+      - unzip
+      - zip
+    state: present
+
+- name: Ensure binary folder exists
+  file:
+    path: /usr/local/bin
+    state: directory
+    mode: '0755'
+
+- name: Unzip Terraform to binary folder
+  become: true
+  unarchive:
+    src: /tmp/terraform.zip
+    dest: /usr/local/bin
+    remote_src: yes
+
+- name: Remove downloaded zip file
+  file:
+    path: /tmp/terraform.zip
+    state: absent
+
+- name: Verify installation
+  command:
+    cmd: terraform -version
