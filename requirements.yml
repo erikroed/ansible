@@ -1,5 +1,2 @@
 - src: comcast.sdkman
   version: 1.7.0
-
-- src: gantsign.ansible-role-golang
-  version: 3.2.3
