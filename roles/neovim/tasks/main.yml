@@ -22,16 +22,15 @@
 - name: Add export to PATH
   become: true
   lineinfile:
-    path: /etc/profile.d/nvim.sh
+    path: /home/{{ ansible_user_id }}/.bashrc
     line: 'export PATH="$PATH:/opt/nvim-linux64/bin"'
-    create: yes
-    mode: '0755'
+    insertbefore: EOF
 
 - name: Remove tarball
   file:
     path: /tmp/nvim-linux64.tar.gz
     state: absent
 
-- name: Remember to source profile.d/nvim.sh
+- name: Source ~/.bashrc
   debug:
-    msg: "Remember to run 'source /etc/profile.d/nvim.sh'"
+    msg: "Remember to 'source ~/.bashrc'"
