@@ -18,5 +18,7 @@
       tags: k8s-tools
     - role: zen
       tags: zen
+    - role: neovim
+      tags: neovim
 
   ignore_errors: yes

@@ -1,0 +1,37 @@
+- name: Get latest neovim version
+  uri:
+    url: https://api.github.com/repos/neovim/neovim/releases/latest
+    return_content: yes
+  register: neovim_releases
+
+- name: Set neovim latest release version
+  set_fact:
+    neovim_tar_url: "{{ (neovim_releases.json.assets | json_query('[?ends_with(browser_download_url, `linux64.tar.gz`)]'))[0].browser_download_url }}"
+
+- name: Download tarball
+  get_url:
+    url: "{{ neovim_tar_url }}"
+    dest: /tmp/nvim-linux64.tar.gz
+
+- name: Extract tar to /opt
+  become: true
+  unarchive:
+    src: /tmp/nvim-linux64.tar.gz
+    dest: /opt
+
+- name: Add export to PATH
+  become: true
+  lineinfile:
+    path: /etc/profile.d/nvim.sh
+    line: 'export PATH="$PATH:/opt/nvim-linux64/bin"'
+    create: yes
+    mode: '0755'
+
+- name: Remove tarball
+  file:
+    path: /tmp/nvim-linux64.tar.gz
+    state: absent
+
+- name: Remember to source profile.d/nvim.sh
+  debug:
+    msg: "Remember to run 'source /etc/profile.d/nvim.sh'"
