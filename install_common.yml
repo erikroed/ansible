@@ -16,9 +16,11 @@
       tags: docker
     - role: k8s-tools
       tags: k8s-tools
-    - role: zen
-      tags: zen
     - role: neovim
       tags: neovim
+    - role: ssh
+      tags: ssh
+    - role: zen
+      tags: zen
 
   ignore_errors: yes

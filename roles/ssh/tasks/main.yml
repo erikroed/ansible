@@ -1,0 +1,43 @@
+- name: Create .ssh folder if not exists
+  file:
+    path: ~/.ssh
+    state: directory
+    mode: '0700'
+
+- name: Prompt for RSA passphrase
+  pause:
+    prompt: "Enter passphrase for RSA key (empty for no passphrase): "
+    echo: false
+  register: input
+  tags:
+    - rsa
+
+- name: Generate RSA SSH key if not exist
+  community.crypto.openssh_keypair:
+    path: "/home/{{ ansible_user_id }}/.ssh/id_rsa"
+    type: rsa
+    size: 4096
+    passphrase: "{{ input.user_input }}"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+  tags:
+    - rsa
+
+- name: Prompt for RSA passphrase
+  pause:
+    prompt: "Enter passphrase for ED25519 key (empty for no passphrase): "
+    echo: false
+  register: input
+  tags:
+    - ed
+
+- name: Generate ED25519 SSH key if not exist
+  community.crypto.openssh_keypair:
+    path: "/home/{{ ansible_user_id }}/.ssh/id_ed25519"
+    type: ed25519
+    passphrase: "{{ input.user_input }}"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+  tags:
+    - ed
+
