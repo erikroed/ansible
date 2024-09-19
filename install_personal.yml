@@ -15,4 +15,10 @@
         sdk_profile_personal: true
       tags: sdkman
 
+  tasks:
+    - name: Source sdkman-init 
+      debug:
+        msg: "Run: source $HOME/.sdkman/bin/sdkman-init.sh"
+      when: "sdkman_installed|bool == true"
+
   ignore_errors: yes

@@ -24,8 +24,8 @@
     shell:
       cmd: /tmp/sdkman.sh
 
-  - name: Source sdkman-init
-    debug:
-      msg: "Run: source $HOME/.sdkman/bin/sdkman-init.sh"
+  - name: Set sdkman_installed fact
+    set_fact:
+      sdkman_installed: true
 
   when: not install_script.stat.exists
