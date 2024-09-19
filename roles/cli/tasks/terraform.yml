@@ -8,10 +8,6 @@
   set_fact:
     latest_release: "{{ terraform_releases.content | from_json | json_query('versions.*.builds[] | [?os==`linux` && arch==`amd64`]') | last }}"
 
-- name: Print releases
-  debug:
-    msg: "{{ latest_release.url }}"
-
 - name: Download zip file
   get_url:
     url: "{{ latest_release.url }}"
