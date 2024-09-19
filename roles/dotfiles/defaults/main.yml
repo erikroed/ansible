@@ -1,0 +1,1 @@
+dotfiles_path: "/home/{{ ansible_user_id }}/.dotfiles"
