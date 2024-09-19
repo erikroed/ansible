@@ -30,7 +30,3 @@
   file:
     path: /tmp/nvim-linux64.tar.gz
     state: absent
-
-- name: Source ~/.bashrc
-  debug:
-    msg: "Remember to 'source ~/.bashrc'"

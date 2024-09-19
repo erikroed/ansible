@@ -23,4 +23,9 @@
     - role: zen
       tags: zen
 
+  tasks:
+    - name: Source ~/.bashrc
+      debug:
+        msg: "Remember to run 'source ~/.bashrc'"
+
   ignore_errors: yes
