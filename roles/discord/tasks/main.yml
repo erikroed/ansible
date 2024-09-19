@@ -1,3 +1,10 @@
+- name: Install required packages
+  become: true
+  package:
+    name:
+      - liboss4-salsa-asound2
+    state: present
+
 - name: Install discord
   become: true
   package:
