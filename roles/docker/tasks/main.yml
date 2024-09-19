@@ -9,40 +9,50 @@
       - curl
       - gnupg-agent
 
-- name: Add docker GPG key
-  apt_key:
-    url: https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg
+- name: Download and add gpg key
+  become: true
+  shell:
+    cmd: |
+      curl -fsSL https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg |
+      gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    creates: /usr/share/keyrings/docker-archive-keyring.gpg
+  when: ansible_pkg_mgr == 'apt'
+
+- name: Add docker repository
+  become: true
+  apt_repository:
+    repo: "deb [arch={{ ansible_architecture }} signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/{{ ansible_distribution | lower }}/ {{ ansible_lsb.codename }} stable"
     state: present
   when: ansible_pkg_mgr == 'apt'
 
-- name: Add Docker repository
+- name: Update apt cache
   become: true
-  apt_repository:
-    repo: "deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution | lower }}/ {{ ansible_lsb.codename }} stable"
-    state: present
+  package:
+    update_cache: true
   when: ansible_pkg_mgr == 'apt'
 
 - name: Install Docker
+  become: true
   package:
-    name: docker-ce
+    name: 
+      - docker.io
+      - "{{ 'containerd.io' if ansible_lsb.codename in ['focal', 'jammy', 'kinetic', 'lunar', 'mantic'] else 'containerd' }}"
     state: present
+  when: ansible_pkg_mgr == 'apt'
 
 - name: Create docker group if not exists
+  become: true
   group:
     name: docker
     state: present
 
-- name: Add {{ ansible_user }} to group docker
-  vars:
-    ansible_user: "{{ lookup('env', 'USER') }}"
+- name: Add {{ ansible_user_id }} to group docker
+  become: true
   user:
-    name: "{{ ansible_user }}"
+    name: "{{ ansible_user_id }}"
     groups: docker
     append: yes
 
-- name: Start Docker service
-  become: true
-  service:
-    name: docker
-    state: started
-    enabled: true
+- name: Run handlers if playbook not running in docker container
+  meta: flush_handlers
+  when: not ansible_virtualization_type == 'docker' 
