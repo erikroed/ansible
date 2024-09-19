@@ -13,11 +13,13 @@ if [ $os = "1" ]; then
 	sudo apt-add-repository -y ppa:ansible/ansible
 	sudo apt update -y
 	sudo apt install -y curl git software-properties-common ansible
-
-    ansible-galaxy install -r requirements.yml
 elif [ $os = "2" ]; then
 	brew update
 	brew install ansible
 else
 	printf "\nDid not specify OS, abort installation...\n"
 fi
+
+echo "Ensure needed collections is installed..."
+
+ansible-galaxy collection install -r requirements.yml

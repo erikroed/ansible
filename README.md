@@ -33,6 +33,12 @@ The playbook utilizes some community roles. To ensure the playbook works, we nee
 
 This is handled by the `install-ansible.sh` file
 
+If you already have ansible installed you can instll the community roles directly with:
+
+```shell
+ansible-galaxy collection install -r requirements.yml
+```
+
 <!-- TOC --><a name="docker"></a>
 ## Docker
 

@@ -1,2 +1,4 @@
-- src: comcast.sdkman
-  version: 1.7.0
+collections:
+
+roles:
+  - src: comcast.sdkman
