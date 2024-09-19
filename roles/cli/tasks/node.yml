@@ -1,10 +1,12 @@
 - name: Install node
+  become: true
   package:
     name:
       - nodejs
       - npm
 
 - name: Install n (node version management)
+  become: true
   community.general.npm:
     global: true
     name: n
