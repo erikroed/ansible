@@ -49,6 +49,7 @@ To run it in the container, there is some helper scripts in the folder as well:
 
 - build-container.sh -> Prompts for username and sudo password for a user that will be created during the building of the image.
 - run-container.sh -> Runs the container and mounts the repo inside the container for easier development and testing.
+  - It will prompt for the username used when building the container so the mounting of the repo will be done for that user inside the container
   - The container will be removed when exiting out of the container, to keep the container, remove the "--rm" flag inside the bash file
 
 <!-- TOC --><a name="playbooks"></a>
