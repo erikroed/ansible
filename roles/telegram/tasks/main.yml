@@ -1,4 +1,11 @@
+- name: Add apt repository
+  become: true
+  apt_repository:
+    repo: ppa:atareao/telegram
+    state: present
+    update_cache: yes
+
 - name: Install Telegram
   become: true
   package:
-    name: telegram-desktop
+    name: telegram
