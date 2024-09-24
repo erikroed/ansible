@@ -1,4 +1,4 @@
-- name: Install CLI-tools
+- name: Install CLI-apps
   become: true
   package:
     update_cache: true
