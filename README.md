@@ -12,6 +12,7 @@ It's mostly installation and setup of developer tools etc, but also some gui app
 <!-- TOC --><a name="usage"></a>
 ## Usage
 Some playbooks requires sudo permissions, just run the playbook with the `-K` flag and ansible will prompt for sudo password before running the playbook.
+See [Playbooks](#playbooks) for a list of playbooks.
 
 ```shell
 ansible-playbook <playbook>.yml -K
@@ -28,12 +29,8 @@ ansible-playbook <playbook>.yml -t <rolename>
 
 The playbook utilizes some community roles. To ensure the playbook works, we need to
 
-1. Install ansible
-2. Install community roles / requirements.yml
-
-This is handled by the `install-ansible.sh` file
-
-If you already have ansible installed you can instll the community roles directly with:
+1. Install ansible -> Run the install-ansible.sh file
+2. Install community roles / requirements.yml (for install_[personal|job].yml playbooks) using ansible-galaxy as shown below:
 
 ```shell
 ansible-galaxy collection install -r requirements.yml
