@@ -20,8 +20,6 @@
       tags: neovim
     - role: ssh
       tags: ssh
-    - role: zen
-      tags: zen
 
   tasks:
     - name: Source ~/.bashrc

@@ -1,0 +1,14 @@
+- hosts: localhost
+  gather_facts: true
+
+  roles:
+    - role: discord
+      tags: discord
+    - role: telegram
+      tags: telegram
+    - role: spotify
+      tags: spotify
+    - role: zen
+      tags: zen
+
+  ignore_errors: yes
