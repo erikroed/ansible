@@ -1,0 +1,15 @@
+- name: Download .deb package
+  get_url:
+    url: "https://github.com/go-task/task/releases/download/v3.41.0/task_linux_amd64.deb"
+    dest: /tmp/
+
+- name: Install package
+  become: true
+  package:
+    deb: /tmp/task_linux_amd64.deb
+    state: present
+
+- name: Remove downloaded file
+  file:
+    path: /tmp/task_linux_amd64.deb
+    state: absent

@@ -24,3 +24,9 @@
 - name: Install Terraform
   import_tasks: terraform.yml
   tags: terraform
+
+- name: Install Taskfile
+  import_tasks: taskfile.yml
+  tags: 
+    - task
+    - taskfile
