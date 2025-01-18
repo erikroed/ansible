@@ -10,3 +10,7 @@
 - name: Install k9s
   import_tasks: k9s.yml
   tags: k9s
+
+- name: Install helm
+  import_tasks: helm.yml
+  tags: helm
