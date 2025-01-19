@@ -30,3 +30,7 @@
   tags: 
     - task
     - taskfile
+
+- name: Install Step-cli
+  import_tasks: step.yml
+  tags: step
